@@ -85,11 +85,17 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-HAUS/Bolts.framework"
+  install_framework "Pods-HAUS/Firebase.framework"
+  install_framework "Pods-HAUS/JSQMessagesViewController.framework"
+  install_framework "Pods-HAUS/JSQSystemSoundPlayer.framework"
   install_framework "Pods-HAUS/Parse.framework"
   install_framework "Pods-HAUS/ParseUI.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-HAUS/Bolts.framework"
+  install_framework "Pods-HAUS/Firebase.framework"
+  install_framework "Pods-HAUS/JSQMessagesViewController.framework"
+  install_framework "Pods-HAUS/JSQSystemSoundPlayer.framework"
   install_framework "Pods-HAUS/Parse.framework"
   install_framework "Pods-HAUS/ParseUI.framework"
 fi

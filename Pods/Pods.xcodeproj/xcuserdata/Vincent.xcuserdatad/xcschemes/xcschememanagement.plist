@@ -9,6 +9,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Firebase.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,7 +42,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>169CCDFED13966AE95E280B8891FE504</key>
+		<key>0FE9874795DA78D6CC80863C255EFF4F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35BF97157708B846B3333079F6CFE9A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -38,6 +58,16 @@
 			<true/>
 		</dict>
 		<key>708E01B006A9F88B3C13711562282B5E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7AC9326D819482593FE118E915409D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BCE017CC285EFEE8B5E23D3C79C47EAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

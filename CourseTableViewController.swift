@@ -6,8 +6,11 @@
 //  Copyright © 2015 Chen Jin. All rights reserved.
 //
 
-/*
+
 import UIKit
+import Parse
+import ParseUI
+import Firebase
 
 
 class CourseTableViewController: PFQueryTableViewController, UISearchBarDelegate {
@@ -42,7 +45,7 @@ let query = Course.query()
 
 // Add a where clause if there is a search criteria
 if searchBar.text != "" {
-query!.whereKey("title", containsString: searchBar.text.lowercaseString)
+query!.whereKey("title", containsString: searchBar.text!.lowercaseString)
 }
 
 return query!
@@ -59,7 +62,7 @@ var title: String = course.title!
 cell.courseLabel.text = title
 
 // Add course name to title list
-if !contains(arrayOfTitle, title) {
+if !arrayOfTitle.contains(title) {
 arrayOfTitle.append(title)
 }
 
@@ -71,7 +74,7 @@ if (segue.identifier == "courseToChat") {
 
 
 // Get the cell index for current cell
-var selectedItems: [AnyObject] = self.tableView.indexPathsForSelectedRows()!
+var selectedItems: [AnyObject] = self.tableView.indexPathsForSelectedRows!
 var selectedItem: NSIndexPath = selectedItems[0] as! NSIndexPath
 var selectedIndex: Int = selectedItem.row
 
@@ -89,10 +92,10 @@ var user: PFUser = PFUser.currentUser()!
 chatView.titleString = courseTitle
 chatView.ref = ref
 chatView.sender = user.username
-println("In prepareForSegue...")
-println(courseTitle)
-println(ref)
-println(user.username)
+print("In prepareForSegue...")
+print(courseTitle)
+print(ref)
+print(user.username)
 
 }
 }
@@ -128,4 +131,4 @@ searchBar.resignFirstResponder()
 self.loadObjects()
 }
 }
-*/
+

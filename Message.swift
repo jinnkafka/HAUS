@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import Parse
+import ParseUI
+import JSQMessagesViewController
 
-/*
+
 class Message : NSObject, JSQMessageData {
     var text_: String
     var sender_: String
@@ -42,4 +45,4 @@ class Message : NSObject, JSQMessageData {
         return imageUrl_;
     }
 }
-*/
+

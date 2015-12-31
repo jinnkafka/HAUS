@@ -1,5 +1,9 @@
 PODS:
   - Bolts/Tasks (1.5.0)
+  - Firebase (2.5.0)
+  - JSQMessagesViewController (5.3.2):
+    - JSQSystemSoundPlayer (= 1.5.2)
+  - JSQSystemSoundPlayer (1.5.2)
   - Parse (1.11.0):
     - Bolts/Tasks (~> 1.5)
   - ParseUI (1.1.7):
@@ -7,11 +11,27 @@ PODS:
     - Parse (~> 1.9)
 
 DEPENDENCIES:
+  - Firebase (>= 2.5.0)
+  - JSQMessagesViewController (from `https://github.com/jessesquires/JSQMessagesViewController`,
+    branch `version_5.3.2_patch`)
   - Parse
   - ParseUI
 
+EXTERNAL SOURCES:
+  JSQMessagesViewController:
+    :branch: version_5.3.2_patch
+    :git: https://github.com/jessesquires/JSQMessagesViewController
+
+CHECKOUT OPTIONS:
+  JSQMessagesViewController:
+    :commit: 78b1797bc0ae273cf7a104853c8293acfaed174b
+    :git: https://github.com/jessesquires/JSQMessagesViewController
+
 SPEC CHECKSUMS:
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
+  JSQMessagesViewController: 6eedd009d4eabb6089ab7578130545899bea6c0f
+  JSQSystemSoundPlayer: 443466bd5f4537d0b7f15a0184244169ae65f8e5
   Parse: 886af46a0a677402f6374bb97ac212e795f70afe
   ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
 

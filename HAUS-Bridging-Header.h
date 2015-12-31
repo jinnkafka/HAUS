@@ -7,3 +7,9 @@
 #import <ParseUI/ParseUI.h>
 
 #import <Bolts/Bolts.h>
+
+#import <Firebase/Firebase.h>
+
+#import <JSQMessagesViewController/JSQMessages.h>
+
+//#import <JSQMessagesViewController/JSQMessagesData.h>

@@ -5,10 +5,14 @@
 //  Created by Chen Jin on 12/28/15.
 //  Copyright © 2015 Chen Jin. All rights reserved.
 //
-/*
+
+
 import UIKit
 import Foundation
-
+import Parse
+import ParseUI
+import Firebase
+import JSQMessagesViewController
 
 
 class CourseChatViewController: JSQMessagesViewController {
@@ -32,7 +36,7 @@ var messagesRef: Firebase!
 
 func setupFirebase() {
 
-println("Setting up firebase in CourseChatViewController")
+print("Setting up firebase in CourseChatViewController")
 // *** STEP 2: SETUP FIREBASE
 messagesRef = Firebase(url: "https://csa.firebaseio.com/\(titleString)")
 // *** STEP 4: RECEIVE MESSAGES FROM FIREBASE (limited to latest 25 messages)
@@ -51,10 +55,10 @@ self.finishReceivingMessage()
 
 
 override func viewDidLoad() {
-println("in CourseChatViewController's viewDidLoad(), before super.viewDidLoad()")
+print("in CourseChatViewController's viewDidLoad(), before super.viewDidLoad()")
 super.viewDidLoad()
-println("in CourseChatViewController's viewDidLoad(), after super.viewDidLoad()")
-inputToolbar.contentView.leftBarButtonItem = nil
+print("in CourseChatViewController's viewDidLoad(), after super.viewDidLoad()")
+inputToolbar!.contentView!.leftBarButtonItem = nil
 automaticallyScrollsToMostRecentMessage = true
 navigationController?.navigationBar.topItem?.title = "Back"
 
@@ -85,15 +89,15 @@ println("senderImageUrl is empty")
 */
 
 senderImageUrl = imageUrlString
-println(sender)
-println(senderImageUrl)
+print(sender)
+print(senderImageUrl)
 
 setupFirebase()
 }
 
 override func viewDidAppear(animated: Bool) {
 super.viewDidAppear(animated)
-collectionView.collectionViewLayout.springinessEnabled = true
+collectionView!.collectionViewLayout.springinessEnabled = true
 }
 
 override func viewWillDisappear(animated: Bool) {
@@ -126,7 +130,7 @@ if let stringUrl = imageUrl {
 if let url = NSURL(string: stringUrl) {
 if let data = NSData(contentsOfURL: url) {
 let image = UIImage(data: data)
-let diameter = incoming ? UInt(collectionView.collectionViewLayout.incomingAvatarViewSize.width) : UInt(collectionView.collectionViewLayout.outgoingAvatarViewSize.width)
+let diameter = incoming ? UInt(collectionView!.collectionViewLayout.incomingAvatarViewSize.width) : UInt(collectionView!.collectionViewLayout.outgoingAvatarViewSize.width)
 let avatarImage = JSQMessagesAvatarFactory.avatarWithImage(image, diameter: diameter)
 avatars[name] = avatarImage
 return
@@ -139,7 +143,7 @@ setupAvatarColor(name, incoming: incoming)
 }
 
 func setupAvatarColor(name: String, incoming: Bool) {
-let diameter = incoming ? UInt(collectionView.collectionViewLayout.incomingAvatarViewSize.width) : UInt(collectionView.collectionViewLayout.outgoingAvatarViewSize.width)
+let diameter = incoming ? UInt(collectionView!.collectionViewLayout.incomingAvatarViewSize.width) : UInt(collectionView!.collectionViewLayout.outgoingAvatarViewSize.width)
 
 let rgbValue = name.hash
 let r = CGFloat(Float((rgbValue & 0xFF0000) >> 16)/255.0)
@@ -147,8 +151,9 @@ let g = CGFloat(Float((rgbValue & 0xFF00) >> 8)/255.0)
 let b = CGFloat(Float(rgbValue & 0xFF)/255.0)
 let color = UIColor(red: r, green: g, blue: b, alpha: 0.5)
 
-let nameLength = count(name)
-let initials : String? = name.substringToIndex(advance(sender.startIndex, min(3, nameLength)))
+let nameLength = name.characters.count
+//let initials : String? = name.substringToIndex(advance(sender.startIndex, min(3, nameLength)))
+let initials : String? = name.substringToIndex(sender.startIndex.advancedBy(min(3, nameLength)))
 let userImage = JSQMessagesAvatarFactory.avatarWithUserInitials(initials, backgroundColor: color, textColor: UIColor.blackColor(), font: UIFont.systemFontOfSize(CGFloat(13)), diameter: diameter)
 
 avatars[name] = userImage
@@ -173,7 +178,7 @@ finishSendingMessage()
 }
 
 override func didPressAccessoryButton(sender: UIButton!) {
-println("Camera pressed!")
+print("Camera pressed!")
 }
 
 override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
@@ -209,13 +214,13 @@ let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPat
 
 let message = messages[indexPath.item]
 if message.sender() == sender {
-cell.textView.textColor = UIColor.blackColor()
+cell.textView!.textColor = UIColor.blackColor()
 } else {
-cell.textView.textColor = UIColor.whiteColor()
+cell.textView!.textColor = UIColor.whiteColor()
 }
 
-let attributes : [NSObject:AnyObject] = [NSForegroundColorAttributeName:cell.textView.textColor, NSUnderlineStyleAttributeName: 1]
-cell.textView.linkTextAttributes = attributes
+let attributes : [String:AnyObject] = [NSForegroundColorAttributeName:cell.textView!.textColor!, NSUnderlineStyleAttributeName: 1]
+cell.textView!.linkTextAttributes = attributes
 
 //        cell.textView.linkTextAttributes = [NSForegroundColorAttributeName: cell.textView.textColor,
 //            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle]
@@ -264,5 +269,5 @@ return kJSQMessagesCollectionViewCellLabelHeightDefault
 
 
 }
-*/
+
 
